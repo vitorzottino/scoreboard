@@ -23,6 +23,19 @@ class MainActivity : AppCompatActivity() {
 
         setUpListeners()
 
+        if(savedInstanceState != null){
+            playerOneScore = savedInstanceState.getInt("PLAYER_ONE_SCORE", 0)
+            playerTwoScore = savedInstanceState.getInt("PLAYER_TWO_SCORE", 0)
+            setUpScorePlayerOne()
+            setUpScorePlayerTwo()
+        }
+
+    }
+
+    override fun onSaveInstanceState(outState: Bundle) {
+        super.onSaveInstanceState(outState)
+        outState.putInt("PLAYER_ONE_SCORE", playerOneScore)
+        outState.putInt("PLAYER_TWO_SCORE", playerTwoScore)
     }
 
     private fun setUpListeners() {
